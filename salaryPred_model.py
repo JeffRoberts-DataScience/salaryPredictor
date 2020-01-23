@@ -8,6 +8,7 @@ __website__ = 'www.portoexpress.com'
 
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.model_selection import cross_val_score
 from sklearn.utils import shuffle
@@ -105,7 +106,7 @@ if __name__ == '__main__':
     res = {}
 
     # define number of processes to run in parallel
-    num_procs = 2
+    num_procs = 8
 
     # shared model paramaters
     verbose_lvl = 5
