@@ -6,6 +6,7 @@ __email__ = 'jeffroberts.ds@gmail.com'
 __website__ = 'www.portoexpress.com'
 
 
+import time
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -123,8 +124,11 @@ if __name__ == '__main__':
     # parallel cross-validate models, using MSE as evaluation metric, and print summaries
     print("Beginning cross validation")
     for model in models:
+        tic = time.perf_counter()
         train_model(model, feature_df, target_df, num_procs, mean_mse, cv_std)
+        toc = time.perf_counter()
         print_summary(model, mean_mse, cv_std)
+        print(f"Elapsed Model runtime: {toc - tic:0.4f} seconds.")
 
     # choose model with lowest mse
     model = min(mean_mse, key=mean_mse.get)
